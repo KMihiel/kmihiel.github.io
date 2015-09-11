@@ -55,10 +55,13 @@ The portfolio was built on Twitter's <a href="http://getbootstrap.com/">Bootstra
 * <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
 
 --------------------
-My Customizations
+My Customizations To Increase WebSpeed
+
 1.) Compress image size for all jpgs and pngs
 2.) Making unneccesary JS function async
 3.) Inline styling index.html to increase page load.
 4.) Minimize all CSS files.
 5.) Remove variables from inside loops in the JS files
 6.) Load only Pizzas that are above the fold to prevent lag. 
+
+Always Minify and Cache when possible!
