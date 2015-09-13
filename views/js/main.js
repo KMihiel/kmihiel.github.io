@@ -448,22 +448,17 @@ var resizePizzas = function(size) {
     return dx;
   }
 
-  // Iterates through pizza elements on the page and changes their widths
+// Iterates through pizza elements on the page and changes their widths
    function changePizzaSizes(size) {
-    var pizzaContainerLength = ("randomPizzaContainer").length;
-    // Sets randomPizzaContainer before the for loop to save repeated processing
-    var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
-    var newwidth = [];
-    for (var i = 0; i < pizzaContainerLength; i++) {
-      var dx = determineDx(randomPizzaContainer[i], size);
-      newwidth[i] = (randomPizzaContainer[i].offsetWidth + dx) + 'px';
-    }    
-    // Created a new for loop to set the styles of the containers prevent the browser from having to rerender and paint so much. 
-    for (var i = 0; i < pizzaContainerLength; i++) {
-    randomPizzaContainer[i].style.width = newwidth[i];
+    // Select the first .randomPizzaContainer and give it to the determinDx function
+    var dx = determineDx(document.querySelector(".randomPizzaContainer"), size);
+    var newwidth = (document.querySelector(".randomPizzaContainer").offsetWidth + dx) + 'px';
+    var elements = document.querySelectorAll(".randomPizzaContainer");
+    // Loop thru all the .randomPizzaContainer elements and update
+    for (var i = elements.length; i--;) {
+      elements[i].style.width = newwidth;
     }
   }
-
   changePizzaSizes(size);
 
   // User Timing API is awesome
@@ -513,10 +508,10 @@ function updatePositions() {
   var phase;
   var items = document.getElementsByClassName('mover');
   //Removed variables from loop
-  for (var i = 0, max = items.length; i < max; i++) {
-        phase = Math.sin(scrollData + (i % 5));
-       items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
-    }
+    for (var i = 0, max = items.length; i < max; i++) {
+          phase = Math.sin(scrollData + (i % 5));
+         items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+      }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
   // Super easy to create custom metrics.
